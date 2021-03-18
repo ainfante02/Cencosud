@@ -5,6 +5,7 @@ import {DsDataSource} from '../datasources';
 export interface Clima {
 
 getCharacter(city: string, apikey: string): Promise<any>;
+
 }
 
 export class ClimaProvider implements Provider<Clima> {

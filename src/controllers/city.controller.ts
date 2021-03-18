@@ -32,36 +32,26 @@ export class CityController {
     protected Clima: Clima
   ) {}
 
- /*  @get('/people/{personId}/')
-  async getCharacter(
-    @param.path.integer('personId') personId: number,
-  ): Promise<object> {
-    //Preconditions
-
-    return this.Clima.getCharacter(personId);
-  } */
 
   @get('/city/{city}')
-  async getCharacter(
-    @param.path.string('city') city: string,
-  ): Promise<object> {
-    //Preconditions
+  async getCharacter(@param.path.string('city') city: string,): Promise<object> {
+  
+    let apikey: string = '51c8a38f9050eb355411f395da45b8ad';  
 
-    let apikey: string = '51c8a38f9050eb355411f395da45b8ad';
-    return  this.Clima.getCharacter( city,apikey);
+    if(Math.random() < 0.1){
+      this.apiErrorRepository.create({ name:"falla al comunicarse con openweathermap"});
+
+      throw new Error("'How unfortunate! The API Request");
+      
+    }
+
+    const response = await this.Clima.getCharacter( city,apikey)
+  
+    return response;
+    
+
   }
-/* 
-  @get('/city/{city}')
-async getCharacter(@param.path.string('city') title: string): Promise<any> {
-const titleArray: Array<string> = title.split(' ');
-const requestTitle: string = titleArray.join('+');
-console.log(`Calling OmdbApi Service for movie/show: ${title}`);
-return await this.callOmdbapi(requestTitle);
-}
-async callOmdbapi(title: string): Promise<any> {
-let apiKey: string = '51c8a38f9050eb355411f395da45b8ad';
-return await this.Clima.getCharacter(apiKey, title);
-} */
+
 
   @post('/cities', {
     responses: {
