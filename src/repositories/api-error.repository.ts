@@ -1,6 +1,6 @@
 import {DefaultCrudRepository} from '@loopback/repository';
 import {ApiError, ApiErrorRelations} from '../models';
-import {DbMemoriaDataSource} from '../datasources';
+import {DbMemoriaDataSource, RedisDataSource} from '../datasources';
 import {inject} from '@loopback/core';
 
 export class ApiErrorRepository extends DefaultCrudRepository<
@@ -9,7 +9,7 @@ export class ApiErrorRepository extends DefaultCrudRepository<
   ApiErrorRelations
 > {
   constructor(
-    @inject('datasources.dbMemoria') dataSource: DbMemoriaDataSource,
+    @inject('datasources.redis') dataSource: RedisDataSource,
   ) {
     super(ApiError, dataSource);
   }

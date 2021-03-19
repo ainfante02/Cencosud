@@ -1,6 +1,6 @@
 import {DefaultCrudRepository} from '@loopback/repository';
 import {City, CityRelations} from '../models';
-import {DbMemoriaDataSource} from '../datasources';
+import {DbMemoriaDataSource, RedisDataSource} from '../datasources';
 import {inject} from '@loopback/core';
 
 export class CityRepository extends DefaultCrudRepository<

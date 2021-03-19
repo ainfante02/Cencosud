@@ -17,7 +17,7 @@ const config = {
     {
       template: {
         method: 'GET',
-        url: 'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apikey}',
+        url: 'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apikey}&units=metric',
       },
       functions: {
         getCharacter: ['city', 'apikey'],
